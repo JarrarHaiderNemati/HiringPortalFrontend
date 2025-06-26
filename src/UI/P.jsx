@@ -1,5 +1,5 @@
-export default function P({children,className}) {
+export default function P({children,className,onClick=()=>{}}) {
   return(
-    <p className={className}>{children}</p>
+    <p onClick={onClick} className={className}>{children}</p>
   )
 }

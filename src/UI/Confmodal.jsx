@@ -1,4 +1,7 @@
-export default function Confmodal({ Icon, title, onConfirm, onCancel }) {
+export default function Confmodal({ Icon='', title, onConfirm=()=>{}, onCancel=()=>{},showConfirmModal}) {
+  if(!showConfirmModal) {
+    return null;
+  }
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm text-center">

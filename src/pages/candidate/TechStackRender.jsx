@@ -1,4 +1,4 @@
-import Svg from "../../UI/Svg";
+import Svg from "@components/UI/Svg";
 
 export default function Techstackrender({ icon, title, onClick }) {
   return (

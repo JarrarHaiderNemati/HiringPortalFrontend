@@ -26,8 +26,8 @@ export default function App() {
         <Route path="/submitted" element={<Guard step='form'><Submitted /></Guard>}></Route>
         <Route path="/uploadresume" element={<Guard step='niche'><Uploadresume /></Guard>}></Route>
         <Route path="/form" element={<Guard step='uploadResume'><Form /></Guard>}></Route>
-        <Route path="/recieved" element={<Guard step='loginAdmin'><StatusPage status='Recieved' /></Guard>}></Route>
-        <Route path="/shortlisted" element={<Guard step='loginAdmin'><StatusPage status='Shortlisted' /></Guard>}></Route>
+        <Route path="/recieved" element={<Guard step='login'><StatusPage status='Recieved' /></Guard>}></Route>
+        <Route path="/shortlisted" element={<Guard step='login'><StatusPage status='Shortlisted' /></Guard>}></Route>
       </Routes>
     </Router>
 

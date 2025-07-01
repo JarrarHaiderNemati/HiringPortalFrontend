@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import RegexTester from "LinksAndRegex/RegexTester";
 import URLS from "LinksAndRegex/Endpoints";
 import StatusCodes from "LinksAndRegex/SCODES";
+import Renderskills from "./RenderSkills";
 
 export default function Form() {
   const navigate = useNavigate();
@@ -187,12 +188,7 @@ export default function Form() {
           onChange={addLanguage}
         >
           <option value="">Select</option>
-          <option value="Python">Python</option>
-          <option value="C++">C++</option>
-          <option value="Java">Java</option>
-          <option value="JavaScript">JavaScript</option>
-          <option value="Angular">Angular</option>
-          <option value="React">React</option>
+          <Renderskills />
         </select>
 
         <div className="flex justify-end">

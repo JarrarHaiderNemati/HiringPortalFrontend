@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, redirect } from "react-router-dom";
 
 const checks = {
   login: {
@@ -20,6 +20,10 @@ const checks = {
   submitted: {
     key: 'submittedDone',
     redirect: '/submitted'
+  },
+  loginAdmin: {
+    key: 'loggedAdmin',
+    redirect: '/'
   }
 };
 

@@ -68,12 +68,17 @@ export default function Signup() {
       } else {
         dispatch(setChecking(false));
         dispatch(setMessage("Signup successful!"));
-        sessionStorage.setItem('email', email);
-        
 
         setTimeout(() => {
           dispatch(resetAuthFields());
           const destination = role === 'Admin' ? '/recieved' : '/niche';
+          if (data.role === 'Admin') {
+            sessionStorage.setItem('loggedAdmin', true);
+            sessionStorage.setItem('email',email);
+          }
+          else {
+            sessionStorage.setItem('email', email);
+          }
           navigate(destination);
         }, 1500);
         return;

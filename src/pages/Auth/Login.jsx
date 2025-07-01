@@ -49,12 +49,18 @@ export default function Login() {
       const data = res.data;
 
       if (data.status === StatusCodes.SUCCESS) {
-        sessionStorage.setItem('email', email);
         dispatch(setMessage("Login Successful!"));
 
         setTimeout(() => {
           dispatch(resetAuthFields());
           const destination = data.role === 'User' ? '/niche' : '/recieved';
+          if (data.role !== 'User') {
+            sessionStorage.setItem('loggedAdmin', true);
+            sessionStorage.setItem('email', email);
+          }
+          else {
+            sessionStorage.setItem('email',email);
+          }
           navigate(destination);
         }, 1500);
 
@@ -120,9 +126,8 @@ export default function Login() {
 
           {message && (
             <P
-              className={`mt-2 font-semibold text-sm ${
-                message === "Login Successful!" ? "text-green-500" : "text-red-500"
-              }`}
+              className={`mt-2 font-semibold text-sm ${message === "Login Successful!" ? "text-green-500" : "text-red-500"
+                }`}
             >
               {message}
             </P>

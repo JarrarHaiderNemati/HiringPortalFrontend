@@ -3,7 +3,7 @@ import {
   Tooltip, Legend
 } from 'recharts';
 import { Download, Trash2, Search } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import axios from 'axios';
 import Svg from '@components/UI/Svg';
 import Button from '@components/UI/Button';
@@ -37,6 +37,8 @@ export default function StatusPage({ status }) {
     selectedCandidate, clicked, toDeleteCandidate
   } = useSelector(state => state.candidates);
 
+  let timeout = useRef(null);
+
   useEffect(() => {
     dispatch(setCandidates([]));
     fetchCandidates();
@@ -44,12 +46,18 @@ export default function StatusPage({ status }) {
   }, [status, pageNumber]);
 
   useEffect(() => {
-    const result = candidates.filter(c =>
-      c.name.toLowerCase().startsWith(search.toLowerCase().trim()) ||
-      c.niche.toLowerCase().startsWith(search.toLowerCase().trim())
-    );
-    dispatch(setFiltered(result));
+    const timeout = setTimeout(() => {
+      const result = candidates.filter(c =>
+        c.name.toLowerCase().startsWith(search.toLowerCase().trim()) ||
+        c.niche.toLowerCase().startsWith(search.toLowerCase().trim())
+      );
+      console.log(result);
+      dispatch(setFiltered(result));
+    }, 1000);
+
+    return () => clearTimeout(timeout);
   }, [search, candidates]);
+
 
   useEffect(() => {
     if (fromDate && toDate) {
